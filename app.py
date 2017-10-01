@@ -1,5 +1,5 @@
 from manipulators.initialization import init_image, clear_image
-from manipulators.paiting import paint_pixel
+from manipulators.paiting import paint_pixel, paint_column, paint_line
 
 
 def call_action(image, command, params):
@@ -10,6 +10,14 @@ def call_action(image, command, params):
             image,
             *list(map(int, params[:2])),
             tuple(list(map(int, params[2:])))),
+        'V': lambda: paint_column(
+            image,
+            *list(map(int, params[:3])),
+            tuple(list(map(int, params[3:])))),
+        'H': lambda: paint_line(
+            image,
+            *list(map(int, params[:3])),
+            tuple(list(map(int, params[3:])))),
     }
     func = switcher.get(command, lambda: None)
     return func()
