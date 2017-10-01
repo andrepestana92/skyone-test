@@ -1,6 +1,5 @@
-def paint_pixel(matrix, line, column, colour):
-    try:
-        matrix[line][column] = colour
-        return matrix
-    except IndexError:
-        return matrix
+def paint_pixel(image, line, column, colour):
+    if line < image.size[1] and column < image.size[0]:
+        pixels = image.load()
+        pixels[column, line] = colour
+    return image

@@ -1,8 +1,9 @@
-def init_matrix(lines, columns):
-    return [[(0,0,0) for i in range(lines)] for j in range(columns)]
+from PIL import Image
 
-def clear_matrix(matrix):
-    try:
-      return [[(0,0,0) for i in range(len(matrix))] for j in range(len(matrix[0]))]
-    except IndexError:
-      return matrix
+
+def init_image(lines, columns):
+    return Image.new('RGB', (columns, lines))
+
+
+def clear_image(image):
+    return Image.new('RGB', (image.size[0], image.size[1]))

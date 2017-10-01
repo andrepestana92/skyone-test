@@ -1,27 +1,32 @@
-from manipulators.initialization import init_matrix, clear_matrix
+from manipulators.initialization import init_image, clear_image
 from manipulators.paiting import paint_pixel
 
-def call_action(matrix, command, params):
+
+def call_action(image, command, params):
     switcher = {
-        'I': lambda: init_matrix(*list(map(int, params))),
-        'C': lambda: clear_matrix(matrix),
+        'I': lambda: init_image(*list(map(int, params))),
+        'C': lambda: clear_image(image),
         'L': lambda: paint_pixel(
-            matrix,
+            image,
             *list(map(int, params[:2])),
-            tuple(params[2:])),
+            tuple(list(map(int, params[2:])))),
     }
-    func  = switcher.get(command, lambda: None)
+    func = switcher.get(command, lambda: None)
     return func()
+
 
 def main():
     command = ''
-    matrix = []
+    image = []
     while(command is not 'X'):
         user_input = input()
-        matrix = call_action(
-            matrix,
-            user_input.split()[0],
-            user_input.split()[1:])
+        command = user_input.split()[0]
+        params = user_input.split()[1:]
+        image = call_action(
+            image,
+            command,
+            params)
+
 
 if __name__ == '__main__':
     main()
