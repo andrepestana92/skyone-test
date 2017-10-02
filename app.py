@@ -1,6 +1,7 @@
 from manipulators.initialization import init_image, clear_image
 from manipulators.paiting import \
     paint_pixel, paint_column, paint_line, paint_rectangle, paint_area
+from manipulators.saving_image import save_image
 
 
 def call_action(image, command, params):
@@ -27,6 +28,7 @@ def call_action(image, command, params):
             image,
             *list(map(int, params[:2])),
             tuple(list(map(int, params[2:])))),
+        'S': lambda: save_image(image, params[0])
     }
     func = switcher.get(command, lambda: None)
     return func()
