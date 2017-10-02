@@ -25,7 +25,7 @@ def call_action(image, command, params):
 
 def main():
     command = ''
-    image = []
+    image = None
     while(command is not 'X'):
         user_input = input()
         command = user_input.split()[0]
