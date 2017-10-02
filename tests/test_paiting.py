@@ -10,14 +10,14 @@ class TestPaiting(unittest.TestCase):
         pixels = image.load()
         self.assertTrue(pixels[0, 1] == (100, 100, 100))
 
-    def test_paint_column(self):
-        image = paint_column(init_image(3, 3), 1, 0, 2, (100, 100, 100))
+    def test_paint_line(self):
+        image = paint_line(init_image(3, 3), 1, 0, 2, (100, 100, 100))
         pixels = image.load()
         for j in range(3):
             self.assertTrue(pixels[j, 1] == (100, 100, 100))
 
-    def test_paint_line(self):
-        image = paint_line(init_image(3, 3), 1, 2, 2, (100, 100, 100))
+    def test_paint_column(self):
+        image = paint_column(init_image(3, 3), 1, 2, 2, (100, 100, 100))
         pixels = image.load()
         for i in range(1, 3):
             self.assertTrue(pixels[2, i] == (100, 100, 100))

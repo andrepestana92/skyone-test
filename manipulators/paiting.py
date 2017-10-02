@@ -6,7 +6,7 @@ def paint_pixel(image, line, column, colour):
     return image
 
 
-def paint_column(image, line, first_column, last_column, colour):
+def paint_line(image, line, first_column, last_column, colour):
     if line >= 0 and line < image.size[1]\
             and first_column >= 0 and last_column < image.size[0]:
         pixels = image.load()
@@ -15,7 +15,7 @@ def paint_column(image, line, first_column, last_column, colour):
     return image
 
 
-def paint_line(image, first_line, last_line, column, colour):
+def paint_column(image, first_line, last_line, column, colour):
     if column >= 0 and column < image.size[1]\
             and first_line >= 0 and last_line < image.size[0]:
         pixels = image.load()
@@ -32,7 +32,7 @@ def paint_rectangle(
         last_column,
         colour):
     for line in range(first_line, last_line+1):
-        paint_column(image, line, first_column, last_column, colour)
+        paint_line(image, line, first_column, last_column, colour)
     return image
 
 
