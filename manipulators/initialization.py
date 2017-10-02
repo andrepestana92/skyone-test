@@ -6,4 +6,4 @@ def init_image(lines, columns):
 
 
 def clear_image(image):
-    return Image.new('RGB', (image.size[0], image.size[1]))
+    return init_image(image.size[1], image.size[0])
